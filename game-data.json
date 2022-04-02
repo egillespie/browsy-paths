@@ -1,22 +1,20 @@
 {
   "scenarios": [
     {
-      "name": "Website URLs",
+      "name": "URLs on the Web",
       "description": [
-        "_URL_ is an abbreviation for Uniform Resource Locator. URLs are often",
-        "called web address but URLs don't just provide addresses to resources",
-        "on the Internet, they also describe how to get them.",
+        "_URL_ is an abbreviation for Uniform Resource Locator. A resource is",
+        "a file or program on a network, and a URL, sometimes called a web",
+        "address, shows both where it is and how it is accessed.",
         "",
-        "A URL for a website includes a scheme (`http` or `https`), a",
-        "hostname (e.g. `en.wikipedia.org`), and a path. There are other parts",
-        "to a URL, but these are the minimum required to load a website. Most",
-        "web browsers will add the scheme for you if you don't type",
-        "it in the address bar.",
+        "A URL includes a scheme such as `http` or `https`, a hostname (e.g.",
+        "`en.wikipedia.org`), and a path. There are other parts to a URL, but",
+        "these three are the minimum required to access a website.",
         "",
-        "The hostname identifies a web server. The path shows where a resource",
-        "exists on a web server. It contains any number of directories and",
-        "a file/resource name, all separated by `/` characters. Paths are",
-        "often case-sensitive.",
+        "The hostname identifies a web server and the path shows where a",
+        "resource is located on that server. A path contains any number of",
+        "directories (including zero) and a file or resource name, each",
+        "separated by `/` characters. Paths are often case-sensitive.",
         "",
         "Here are some examples of URLs:",
         "",
@@ -25,9 +23,9 @@
         "- `https://en.wikipedia.org/wiki/URL`",
         "- `https://i.imgur.com/MTx4HLt.png`"
       ],
-      "question": "What is the _absolute path_ for `HomePage.jpg`?",
-      "answer": "https://muser.github.io/tea-gazebo/Images/HomePage.jpg",
-      "siteUrl": "https://muser.github.io/tea-gazebo/",
+      "question": "What is the _URL_ for `HomePage.jpg`?",
+      "answer": "https://tea-gazebo.com/Images/HomePage.jpg",
+      "siteUrl": "https://tea-gazebo.com",
       "project": {
         "CSS": {
           "styles.css": null
