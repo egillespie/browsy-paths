@@ -34,7 +34,7 @@ export default {
   mounted () {
     // eslint-disable-next-line nuxt/no-globals-in-created
     window.addEventListener('keydown', (e) => {
-      if (this.show && e.keyCode === 27) {
+      if (this.show && e.code === 'Escape') {
         this.close()
       }
     })
