@@ -87,6 +87,7 @@
             id="answer"
             ref="answer"
             v-model="answer"
+            v-focus
             type="text"
             class="inline-block bg-gray-100 w-full px-2 py-1 border border-solid border-gray-400 outline-none focus:border-blue-500 focus:bg-white"
             placeholder="Type your answer here"

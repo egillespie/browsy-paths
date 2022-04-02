@@ -33,7 +33,7 @@ export default {
 <style>
 .md code {
   @apply whitespace-no-wrap;
-  @apply text-sm;
+  @apply text-xs;
   @apply bg-gray-300;
   @apply p-1;
   @apply rounded-sm;
@@ -57,6 +57,6 @@ export default {
 }
 
 .md p, .md ol, .md ul {
-  @apply mb-2;
+  @apply mb-3;
 }
 </style>
