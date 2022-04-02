@@ -47,14 +47,20 @@
       </small>
     </header>
     <article class="mb-8">
-      <header>
-        <h2 class="text-2xl text-center text-bold">
-          Scenario {{ scenarioNumber }} of {{ scenarioTotal }}
+      <header class="mb-4 text-center">
+        <h2 class="text-2xl text-bold">
+          {{ scenario.name }}
         </h2>
+        <small class="text-lg italic leading-tight">
+          Scenario {{ scenarioNumber }} of {{ scenarioTotal }}
+        </small>
       </header>
+      <section v-if="scenario.description" class="mb-4">
+        <render-md :md="stringify(scenario.description)" format="block" />
+      </section>
       <section class="mb-4">
         <h3 class="font-semibold">
-          Site URL
+          Website URL
         </h3>
         <code class="block bg-white border border-solid border-blue-200 p-2 shadow-sm">
           {{ scenario.siteUrl }}
@@ -62,7 +68,7 @@
       </section>
       <section class="mb-4">
         <h3 class="font-semibold">
-          Project files
+          Website files
         </h3>
         <file-tree
           :files="scenario.project"
@@ -118,7 +124,7 @@
     </article>
     <footer class="static bottom-0 text-center leading-tight">
       <small class="block mb-1">
-        &copy; Copyright 2020,
+        &copy; Copyright 2020-Present,
         <a
           class="text-blue-900 hover:underline"
           href="https://twitter.com/eriklgillespie"
@@ -175,6 +181,11 @@ export default {
     }
   },
   methods: {
+    stringify (arrayOrString) {
+      return Array.isArray(arrayOrString)
+        ? arrayOrString.join('\n')
+        : arrayOrString
+    },
     showCheckAnswer () {
       this.showCheckAnswerModal = true
     },

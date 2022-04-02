@@ -10,11 +10,21 @@ export default {
     md: {
       type: String,
       required: true
+    },
+    format: {
+      type: String,
+      required: false,
+      default: 'inline',
+      validator (value) {
+        return ['inline', 'block'].includes(value)
+      }
     }
   },
   computed: {
     asHtml () {
-      return markdownIt.renderInline(this.md)
+      return this.format === 'inline'
+        ? markdownIt.renderInline(this.md)
+        : markdownIt.render(this.md)
     }
   }
 }
@@ -31,5 +41,22 @@ export default {
 
 .md em {
   @apply font-semibold;
+}
+
+.md ol {
+  @apply list-decimal;
+}
+
+.md ul {
+  @apply list-disc;
+}
+
+.md li {
+  @apply leading-relaxed;
+  @apply ml-4;
+}
+
+.md p, .md ol, .md ul {
+  @apply mb-2;
 }
 </style>
