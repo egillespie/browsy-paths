@@ -182,6 +182,13 @@ export default {
       return this.game.scenarios.length
     }
   },
+  mounted () {
+    this.scenarioIndex = Math.min(
+      (parseInt(window.location.hash.slice(1)) - 1) || 0,
+      this.scenarioTotal - 1
+    )
+    window.location.hash = this.scenarioNumber
+  },
   methods: {
     stringify (arrayOrString) {
       return Array.isArray(arrayOrString)
@@ -209,6 +216,7 @@ export default {
         this.closeCheckAnswer()
         this.clearAndFocusAnswer()
         this.scenarioIndex++
+        window.location.hash = this.scenarioNumber
       }
     },
     nextScenarioIfCorrectAnswer () {
@@ -221,6 +229,7 @@ export default {
         this.closeCheckAnswer()
         this.clearAndFocusAnswer()
         this.scenarioIndex--
+        window.location.hash = this.scenarioNumber
       }
     }
   }
