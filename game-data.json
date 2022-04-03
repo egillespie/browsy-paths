@@ -1,4 +1,14 @@
 {
+  "todos": [
+    "- [x] URLs on the Web",
+    "- [ ] Absolute Paths",
+    "- [ ] Root-relative Paths",
+    "- [ ] Relative Paths",
+    "- [ ] Good Link Text",
+    "- [ ] Protocol-relative Paths",
+    "- [ ] Special Schemes",
+    "- [ ] Document Fragments"
+  ],
   "scenarios": [
     {
       "name": "URLs on the Web",
