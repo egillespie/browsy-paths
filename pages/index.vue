@@ -146,10 +146,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import GameButton from '~/components/game-button'
 import Modal from '~/components/modal'
 import RenderMd from '~/components/render-md'
-import game from '~/game-data.json'
 
 export default {
   components: {
@@ -160,33 +160,22 @@ export default {
   data () {
     return {
       answer: '',
-      scenarioIndex: 0,
-      showCheckAnswerModal: false,
-      game
+      showCheckAnswerModal: false
     }
   },
   computed: {
-    isFirstScenario () {
-      return this.scenarioIndex === 0
-    },
-    isLastScenario () {
-      return this.scenarioIndex === this.game.scenarios.length - 1
-    },
-    scenario () {
-      return this.game.scenarios[this.scenarioIndex]
-    },
-    scenarioNumber () {
-      return this.scenarioIndex + 1
-    },
-    scenarioTotal () {
-      return this.game.scenarios.length
-    }
+    ...mapGetters({
+      isFirstScenario: 'scenarios/isFirst',
+      isLastScenario: 'scenarios/isLast',
+      scenario: 'scenarios/current',
+      scenarioIndex: 'scenarios/index',
+      scenarioNumber: 'scenarios/number',
+      scenarioTotal: 'scenarios/total'
+    })
   },
   mounted () {
-    this.scenarioIndex = Math.min(
-      (parseInt(window.location.hash.slice(1)) - 1) || 0,
-      this.scenarioTotal - 1
-    )
+    const scenarioIndex = parseInt(window.location.hash.slice(1)) || 0
+    this.$store.commit('scenarios/set', scenarioIndex)
     window.location.hash = this.scenarioNumber
   },
   methods: {
@@ -201,7 +190,8 @@ export default {
     closeCheckAnswer () {
       this.showCheckAnswerModal = false
     },
-    clearAndFocusAnswer () {
+    resetScenario () {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       this.answer = ''
     },
     onEnterKey () {
@@ -214,8 +204,8 @@ export default {
     nextScenario () {
       if (!this.isLastScenario) {
         this.closeCheckAnswer()
-        this.clearAndFocusAnswer()
-        this.scenarioIndex++
+        this.resetScenario()
+        this.$store.commit('scenarios/next')
         window.location.hash = this.scenarioNumber
       }
     },
@@ -227,8 +217,8 @@ export default {
     previousScenario () {
       if (!this.isFirstScenario) {
         this.closeCheckAnswer()
-        this.clearAndFocusAnswer()
-        this.scenarioIndex--
+        this.resetScenario()
+        this.$store.commit('scenarios/previous')
         window.location.hash = this.scenarioNumber
       }
     }
