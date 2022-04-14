@@ -3,40 +3,37 @@
     class="mb-8"
     @keypress.enter.prevent="onEnterKey"
   >
-    <header class="mb-4 text-center">
-      <h2 class="text-2xl text-gray-900 font-bold">
-        {{ scenario.name }}
-      </h2>
-      <small class="text-lg italic leading-tight">
-        Page {{ scenarioNumber }} of {{ scenarioTotal }}
-      </small>
-    </header>
+    <scenario-header
+      :name="scenario.name"
+      :number="scenarioNumber"
+      :total="scenarioTotal"
+    />
     <section v-if="scenario.description" class="mb-4">
-      <h3 class="text-xl text-gray-800 font-bold border-blue-300 border-solid border-b mb-2">
+      <section-header>
         Explanation
-      </h3>
+      </section-header>
       <render-md :md="stringify(scenario.description)" format="block" />
     </section>
     <section class="mb-4">
-      <h3 class="text-xl text-gray-800 font-bold border-blue-300 border-solid border-b mb-2">
+      <section-header>
         Exercise
-      </h3>
-      <h4 class="font-semibold mt-4">
+      </section-header>
+      <exercise-header>
         Website URL
-      </h4>
+      </exercise-header>
       <code class="block bg-white border border-solid border-blue-200 p-2 shadow-sm">
         {{ scenario.siteUrl }}
       </code>
-      <h4 class="font-semibold mt-4">
+      <exercise-header>
         Website files
-      </h4>
+      </exercise-header>
       <file-tree
         :files="scenario.project"
         class="bg-white border border-solid border-blue-200 p-2 shadow-sm"
       />
-      <h4 class="font-semibold mt-4">
+      <exercise-header>
         Question
-      </h4>
+      </exercise-header>
       <form class="bg-white border border-solid border-blue-200 p-2 shadow-sm">
         <label for="answer" class="inline-block mb-2">
           <render-md :md="scenario.question" />
@@ -93,12 +90,18 @@ import { mapGetters } from 'vuex'
 import GameButton from '~/components/game-button'
 import CheckAnswerModal from '~/components/check-answer-modal'
 import RenderMd from '~/components/render-md'
+import ScenarioHeader from '~/components/scenario-header'
+import SectionHeader from '~/components/section-header.vue'
+import ExerciseHeader from '~/components/exercise-header.vue'
 
 export default {
   components: {
     GameButton,
     CheckAnswerModal,
-    RenderMd
+    RenderMd,
+    ScenarioHeader,
+    SectionHeader,
+    ExerciseHeader
   },
   data () {
     return {
