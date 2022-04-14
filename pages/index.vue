@@ -3,41 +3,12 @@
     class="max-w-screen-md p-4 mx-auto"
     @keypress.enter.prevent="onEnterKey"
   >
-    <modal :show="showCheckAnswerModal" @close="closeCheckAnswer">
-      <template v-slot:header>
-        <span v-if="answer === scenario.answer">Yes, that's correct!</span>
-        <span v-else>Sorry, that's incorrect.</span>
-      </template>
-      <template v-slot:content>
-        <p v-if="answer === scenario.answer">
-          Woohoo, you did it. Congratulations! 🎉
-        </p>
-        <p v-else>
-          Pay close attention to the type of path requested
-          as well as the locations of the source and destination.
-          Remember to include the name of the destination, too!
-        </p>
-        <small class="block text-right italic mt-8">
-          <span v-if="!isLastScenario && answer === scenario.answer">
-            Press Enter for the next scenario or Escape to close this popup.
-          </span>
-          <span v-else>
-            Press Escape to close this popup.
-          </span>
-        </small>
-      </template>
-      <template v-slot:footer>
-        <game-button
-          :disabled="answer !== scenario.answer"
-          @click="nextScenarioIfCorrectAnswer"
-        >
-          Next
-        </game-button>
-        <game-button @click="closeCheckAnswer">
-          Close
-        </game-button>
-      </template>
-    </modal>
+    <check-answer-modal
+      :show="showCheckAnswerModal"
+      :correct="answer === scenario.answer"
+      @next="nextScenarioIfCorrectAnswer"
+      @close="closeCheckAnswer"
+    />
     <header class="p-4 text-white bg-blue-800 shadow mb-4 text-center">
       <h1 class="text-4xl">
         Browsy Paths
@@ -148,13 +119,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import GameButton from '~/components/game-button'
-import Modal from '~/components/modal'
+import CheckAnswerModal from '~/components/check-answer-modal'
 import RenderMd from '~/components/render-md'
 
 export default {
   components: {
     GameButton,
-    Modal,
+    CheckAnswerModal,
     RenderMd
   },
   data () {
