@@ -55,4 +55,8 @@ html {
 body {
   @apply bg-blue-100;
 }
+
+.exercise-content {
+  @apply block bg-white border border-solid border-blue-200 p-2 shadow-sm;
+}
 </style>

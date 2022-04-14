@@ -21,7 +21,7 @@
       <exercise-header>
         Website URL
       </exercise-header>
-      <code class="block bg-white border border-solid border-blue-200 p-2 shadow-sm">
+      <code class="exercise-content">
         {{ scenario.siteUrl }}
       </code>
       <exercise-header>
@@ -29,12 +29,12 @@
       </exercise-header>
       <file-tree
         :files="scenario.project"
-        class="bg-white border border-solid border-blue-200 p-2 shadow-sm"
+        class="exercise-content"
       />
       <exercise-header>
         Question
       </exercise-header>
-      <form class="bg-white border border-solid border-blue-200 p-2 shadow-sm">
+      <form class="exercise-content">
         <label for="answer" class="inline-block mb-2">
           <render-md :md="scenario.question" />
         </label>
