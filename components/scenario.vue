@@ -142,10 +142,6 @@ export default {
     closeCheckAnswer () {
       this.showCheckAnswerModal = false
     },
-    resetScenario () {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      this.guess = ''
-    },
     onEnterKey () {
       if (this.showCheckAnswerModal) {
         this.nextScenarioIfCorrectAnswer()
@@ -156,8 +152,7 @@ export default {
     nextScenario () {
       if (!this.isLastScenario) {
         this.closeCheckAnswer()
-        this.resetScenario()
-        this.$store.commit('scenarios/next')
+        this.$store.dispatch('scenarios/next', { router: this.$router })
       }
     },
     nextScenarioIfCorrectAnswer () {
@@ -168,8 +163,7 @@ export default {
     previousScenario () {
       if (!this.isFirstScenario) {
         this.closeCheckAnswer()
-        this.resetScenario()
-        this.$store.commit('scenarios/previous')
+        this.$store.dispatch('scenarios/previous', { router: this.$router })
       }
     }
   }

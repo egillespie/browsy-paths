@@ -8,6 +8,7 @@
     <template v-slot:question>
       What is the <em>absolute path</em> for <code>HomePage.jpg</code>?
     </template>
+
     <template v-slot:explanation>
       <p>
         An <em>absolute path</em> is a URL containing the following parts:
@@ -20,7 +21,7 @@
           The domain name (e.g. <code>www.google.com</code>)
         </li>
         <li>
-          Directory names separate by <code>/</code>
+          Directory names separated by <code>/</code>
           (e.g. <code>/assets/styles/</code>)
         </li>
         <li>

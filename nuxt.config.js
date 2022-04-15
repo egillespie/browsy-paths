@@ -30,7 +30,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/file-tree'
+    '~/plugins/file-tree',
+    { src: '~/plugins/sync-router-scenario.js', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

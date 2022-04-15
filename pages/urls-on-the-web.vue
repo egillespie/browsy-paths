@@ -8,12 +8,13 @@
     <template v-slot:question>
       What is the <em>URL</em> for <code>HomePage.jpg</code>?
     </template>
+
     <template v-slot:explanation>
       <p>
         <abbr title="Uniform Resource Locator">URL</abbr> is an abbreviation for
         <em>Uniform Resource Locator</em>. A resource is a file or program on a
         network and a URL, sometimes called a web address, shows both where a
-        resource is and how it is accessed.
+        resource is located and how it is accessed.
       </p>
       <p>
         A URL includes a scheme such as <code>http</code> or <code>https</code>,
