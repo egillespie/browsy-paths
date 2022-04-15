@@ -1,17 +1,14 @@
 <template>
-  <article
-    class="mb-8"
-    @keypress.enter.prevent="onEnterKey"
+  <scenario
+    name="URLs on the Web"
+    answer="https://tea-gazebo.com/Images/HomePage.jpg"
+    website-url="https://tea-gazebo.com"
+    :website-files="files"
   >
-    <scenario-header
-      name="URLs on the Web"
-      :number="scenarioNumber"
-      :total="scenarioTotal"
-    />
-    <section class="explanation mb-4">
-      <section-header>
-        Explanation
-      </section-header>
+    <template v-slot:question>
+      What is the <em>URL</em> for <code>HomePage.jpg</code>?
+    </template>
+    <template v-slot:explanation>
       <p>
         <abbr title="Uniform Resource Locator">URL</abbr> is an abbreviation for
         <em>Uniform Resource Locator</em>. A resource is a file or program on a
@@ -55,100 +52,20 @@
           >https://i.imgur.com/MTx4HLt.png</a>
         </li>
       </ul>
-    </section>
-    <section class="mb-4">
-      <section-header>
-        Exercise
-      </section-header>
-      <exercise-header>
-        Website URL
-      </exercise-header>
-      <code class="exercise-content">
-        https://tea-gazebo.com
-      </code>
-      <exercise-header>
-        Website files
-      </exercise-header>
-      <file-tree
-        :files="projectFiles"
-        class="exercise-content"
-      />
-      <exercise-header>
-        Question
-      </exercise-header>
-      <form class="exercise-content">
-        <label for="answer" class="inline-block mb-2">
-          What is the <em>URL</em> for <code>HomePage.jpg</code>?
-        </label>
-        <input
-          id="answer"
-          ref="answer"
-          v-model="guess"
-          type="text"
-          class="inline-block bg-gray-100 w-full px-2 py-1 border border-solid border-gray-400 outline-none focus:border-blue-500 focus:bg-white"
-          placeholder="Type your answer here"
-        >
-      </form>
-    </section>
-    <nav>
-      <ol class="flex justify-around">
-        <li>
-          <game-button
-            :disabled="isFirstScenario"
-            @click="previousScenario"
-          >
-            Prev
-          </game-button>
-        </li>
-        <li>
-          <game-button
-            class="underline"
-            @click="showCheckAnswer"
-          >
-            Check Answer
-          </game-button>
-        </li>
-        <li>
-          <game-button
-            :disabled="isLastScenario"
-            @click="nextScenario"
-          >
-            Next
-          </game-button>
-        </li>
-      </ol>
-    </nav>
-    <check-answer-modal
-      :show="showCheckAnswerModal"
-      :correct="guess === answer"
-      @next="nextScenarioIfCorrectAnswer"
-      @close="closeCheckAnswer"
-    />
-  </article>
+    </template>
+  </scenario>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import GameButton from '~/components/game-button'
-import CheckAnswerModal from '~/components/check-answer-modal'
-import ScenarioHeader from '~/components/scenario-header'
-import SectionHeader from '~/components/section-header.vue'
-import ExerciseHeader from '~/components/exercise-header.vue'
+import Scenario from '~/components/scenario'
 
 export default {
   components: {
-    GameButton,
-    CheckAnswerModal,
-    ScenarioHeader,
-    SectionHeader,
-    ExerciseHeader
+    Scenario
   },
   data () {
     return {
-      answer: 'https://tea-gazebo.com/Images/HomePage.jpg',
-      guess: '',
-      showCheckAnswerModal: false,
-      projectFiles: {
+      files: {
         CSS: {
           'styles.css': null
         },
@@ -159,100 +76,6 @@ export default {
         'index.html': null
       }
     }
-  },
-  computed: {
-    ...mapGetters({
-      isFirstScenario: 'scenarios/isFirst',
-      isLastScenario: 'scenarios/isLast',
-      scenario: 'scenarios/current',
-      scenarioIndex: 'scenarios/index',
-      scenarioNumber: 'scenarios/number',
-      scenarioTotal: 'scenarios/total'
-    })
-  },
-  methods: {
-    stringify (arrayOrString) {
-      return Array.isArray(arrayOrString)
-        ? arrayOrString.join('\n')
-        : arrayOrString
-    },
-    showCheckAnswer () {
-      this.showCheckAnswerModal = true
-    },
-    closeCheckAnswer () {
-      this.showCheckAnswerModal = false
-    },
-    resetScenario () {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      this.guess = ''
-    },
-    onEnterKey () {
-      if (this.showCheckAnswerModal) {
-        this.nextScenarioIfCorrectAnswer()
-      } else {
-        this.showCheckAnswer()
-      }
-    },
-    nextScenario () {
-      if (!this.isLastScenario) {
-        this.closeCheckAnswer()
-        this.resetScenario()
-        this.$store.commit('scenarios/next')
-      }
-    },
-    nextScenarioIfCorrectAnswer () {
-      if (this.guess === this.answer) {
-        this.nextScenario()
-      }
-    },
-    previousScenario () {
-      if (!this.isFirstScenario) {
-        this.closeCheckAnswer()
-        this.resetScenario()
-        this.$store.commit('scenarios/previous')
-      }
-    }
   }
 }
 </script>
-
-<style>
-.explanation a {
-  @apply text-blue-800;
-}
-
-.explanation a:hover {
-  @apply underline;
-}
-
-.explanation abbr {
-  @apply font-semibold;
-}
-
-.explanation code {
-  @apply whitespace-no-wrap;
-  @apply text-xs;
-  @apply bg-gray-300;
-  @apply p-1;
-  @apply rounded-sm;
-}
-
-.explanation ol {
-  @apply list-decimal;
-}
-
-.explanation ul {
-  @apply list-disc;
-}
-
-.explanation li {
-  @apply leading-relaxed;
-  @apply ml-4;
-}
-
-.explanation p,
-.explanation ol,
-.explanation ul {
-  @apply mb-3;
-}
-</style>
