@@ -3,6 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import ProjectTree from '@/components/project-tree'
+import ProjectFile from '@/components/project-file'
+
+import '@/assets/css/tailwind.css'
+import '@/assets/css/app.css'
+
 router.beforeEach((to, _from, next) => {
   const scenarios = store.getters['pages/all']
   const scenarioIndex = scenarios.indexOf(to.path)
@@ -14,4 +20,9 @@ router.beforeEach((to, _from, next) => {
   }
 })
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App)
+  .component('ProjectTree', ProjectTree)
+  .component('ProjectFile', ProjectFile)
+  .use(store)
+  .use(router)
+  .mount('#app')
