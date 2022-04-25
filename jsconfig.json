@@ -4,7 +4,6 @@
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
-    "whitespace": "preserve",
     "jsx": "preserve",
     "paths": {
       "@/*": [
