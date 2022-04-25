@@ -2,6 +2,9 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Page {{ pageNumber }} of {{ pageTotal }}</h2>
+    <div class="bg-white">
+      <project-tree :files="files"/>
+    </div>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -12,11 +15,29 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import ProjectTree from '@/components/project-tree'
 
 export default {
   name: 'HelloWorld',
+  components: {
+    ProjectTree
+  },
   props: {
     msg: String
+  },
+  data () {
+    return {
+      files: {
+        CSS: {
+          'styles.css': null
+        },
+        Images: {
+          'BubbleIsland.jpg': null,
+          'HomePage.jpg': null
+        },
+        'index.html': null
+      }
+    }
   },
   computed: {
     ...mapGetters({
@@ -35,10 +56,6 @@ h3 {
 ul {
   list-style-type: none;
   padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
 }
 a {
   color: #42b983;
