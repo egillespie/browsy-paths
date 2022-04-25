@@ -7,7 +7,6 @@ import ProjectTree from '@/components/project-tree'
 import ProjectFile from '@/components/project-file'
 
 import '@/assets/css/tailwind.css'
-import '@/assets/css/app.css'
 
 router.beforeEach((to, _from, next) => {
   const scenarios = store.getters['pages/all']
