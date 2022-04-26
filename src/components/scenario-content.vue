@@ -43,7 +43,7 @@
             ref="answer"
             v-model="guess"
             type="text"
-            class="inline-block bg-gray-100 w-full px-2 py-1 border border-solid border-gray-400 outline-none focus:border-blue-500 focus:bg-white"
+            class="inline-block bg-gray-100 w-full px-2 py-1 border border-solid border-gray-400 outline-none focus:border-primary-500 focus:bg-white"
             placeholder="Type your answer here"
           >
         </form>
@@ -175,7 +175,7 @@ export default {
 
 <style>
 .explanation a {
-  @apply text-blue-800;
+  @apply text-primary-800;
 }
 
 .explanation a:hover {

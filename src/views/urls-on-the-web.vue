@@ -24,8 +24,8 @@
       </p>
       <p>
         The hostname identifies a web server and the path shows where a resource
-        is located on that server. A path contains any number (including zero)
-        of directories and a file or resource name, each separated by
+        is located on that server. A path contains any number of directories
+        (including zero) and a file or resource name, each separated by
         <code>/</code> characters. Paths are often case-sensitive.
       </p>
       <p>

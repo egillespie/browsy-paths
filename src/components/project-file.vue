@@ -1,6 +1,6 @@
 <template>
   <li class="file leading-5">
-    <span class="inline-block p-1 border border-transparent border-solid hover:border-blue-500 hover:cursor-pointer">
+    <span class="inline-block p-1 border border-transparent border-solid hover:border-primary-500 hover:cursor-pointer">
       <img
         v-if="children"
         src="@/assets/svg/folder-icon.svg"
