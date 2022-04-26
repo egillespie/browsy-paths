@@ -65,7 +65,7 @@ export default {
     })
   },
   methods: {
-    nextPage () {
+    nextPage (e) {
       if (!this.isLastPage) {
         this.$store.dispatch('pages/next', { router: this.$router })
       }

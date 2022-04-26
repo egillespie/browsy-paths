@@ -4,17 +4,17 @@ export default createStore({
   modules: {
     pages: {
       namespaced: true,
-
       state: {
         currentIndex: 0,
-        scenarios: [
+        pages: [
           '/',
-          '/about'
+          '/urls-on-the-web',
+          '/absolute-paths'
         ]
       },
       getters: {
         all (state) {
-          return state.scenarios
+          return state.pages
         },
         index (state) {
           return state.currentIndex
@@ -23,16 +23,16 @@ export default createStore({
           return state.currentIndex + 1
         },
         current (state) {
-          return state.scenarios[state.currentIndex]
+          return state.pages[state.currentIndex]
         },
         isFirst (state) {
           return state.currentIndex === 0
         },
         isLast (state) {
-          return state.currentIndex === state.scenarios.length - 1
+          return state.currentIndex === state.pages.length - 1
         },
         total (state) {
-          return state.scenarios.length
+          return state.pages.length
         }
       },
 
@@ -40,8 +40,8 @@ export default createStore({
         set (state, newIndex) {
           if (newIndex < 0) {
             state.currentIndex = 0
-          } else if (newIndex >= state.scenarios.length) {
-            state.currentIndex = state.scenarios.length - 1
+          } else if (newIndex >= state.pages.length) {
+            state.currentIndex = state.pages.length - 1
           } else {
             state.currentIndex = newIndex
           }
@@ -50,15 +50,15 @@ export default createStore({
 
       actions: {
         next ({ state, commit }, { router }) {
-          if (state.currentIndex < state.scenarios.length - 1) {
+          if (state.currentIndex < state.pages.length - 1) {
             commit('set', state.currentIndex + 1)
-            router.push(state.scenarios[state.currentIndex])
+            router.push(state.pages[state.currentIndex])
           }
         },
         previous ({ state, commit }, { router }) {
           if (state.currentIndex > 0) {
             commit('set', state.currentIndex - 1)
-            router.push(state.scenarios[state.currentIndex])
+            router.push(state.pages[state.currentIndex])
           }
         }
       }
