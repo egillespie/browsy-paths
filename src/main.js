@@ -9,10 +9,10 @@ import ProjectFile from '@/components/project-file'
 import '@/assets/css/tailwind.css'
 
 router.beforeEach((to, _from, next) => {
-  const scenarios = store.getters['pages/all']
-  const scenarioIndex = scenarios.indexOf(to.path)
-  if (scenarioIndex >= 0) {
-    store.commit('pages/set', scenarioIndex)
+  const pages = store.getters['pages/all']
+  const pageIndex = pages.indexOf(to.path)
+  if (pageIndex >= 0) {
+    store.commit('pages/set', pageIndex)
     next()
   } else {
     next('/')

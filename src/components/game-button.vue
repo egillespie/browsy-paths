@@ -10,6 +10,8 @@
 
 <script>
 export default {
+  // Prevent original click event from broadcasting
+  inheritAttrs: false,
   props: {
     disabled: {
       type: Boolean,
