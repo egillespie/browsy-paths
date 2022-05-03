@@ -1,5 +1,5 @@
 <template>
-  <header class="max-w-screen-md mx-auto md:my-4 p-4 text-white bg-primary-800 shadow text-center">
+  <header class="max-w-screen-md mx-auto md:my-4 p-4 text-slate-100 bg-sky-800 shadow text-center">
     <h1 class="text-4xl">
       Browsy Paths
     </h1>
@@ -16,7 +16,7 @@
     <small class="block mb-1">
       &copy; Copyright 2020-Present,
       <a
-        class="text-primary-900 hover:underline"
+        class="text-sky-800 dark:text-sky-500 hover:underline"
         href="https://twitter.com/eriklgillespie"
         target="_blank"
       >Erik Gillespie</a>.
@@ -24,7 +24,7 @@
     <small class="block mb-1">
       Feedback or questions?
       <a
-        class="text-primary-900 hover:underline"
+        class="text-sky-800 dark:text-sky-500 hover:underline"
         href="https://github.com/egillespie/browsy-paths"
         target="_blank"
       >Create an issue on GitHub.</a>
@@ -42,6 +42,10 @@ html {
   @apply scroll-smooth;
   @apply box-border;
   @apply overflow-y-scroll;
+  @apply text-slate-800;
+  @apply bg-sky-100;
+  @apply dark:text-slate-300;
+  @apply dark:bg-slate-800;
 }
 
 *,
@@ -49,9 +53,5 @@ html {
 *:after {
   @apply box-border;
   @apply m-0;
-}
-
-body {
-  @apply bg-primary-100;
 }
 </style>

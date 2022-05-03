@@ -1,6 +1,6 @@
 <template>
   <header class="mb-4 text-center">
-    <h2 class="text-2xl text-gray-900 font-bold">
+    <h2 class="text-2xl font-bold">
       {{ name }}
     </h2>
     <small class="text-lg italic leading-tight">

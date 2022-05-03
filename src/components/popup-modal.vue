@@ -2,11 +2,11 @@
   <transition name="modal">
     <div
       v-show="show"
-      class="fixed inset-0 z-50 px-2 bg-translucent transition-opacity duration-300 ease-in-out"
+      class="fixed inset-0 z-50 px-2 bg-translucent dark:bg-translucenter transition-opacity duration-300 ease-in-out"
       @click="close"
     >
       <div
-        class="max-w-screen-sm bg-white rounded mt-16 mx-auto p-4 shadow transition-all duration-300 ease-in-out"
+        class="max-w-screen-sm bg-white dark:bg-slate-800 dark:text-slate-300 rounded mt-16 mx-auto p-4 shadow transition-all duration-300 ease-in-out"
         @click.stop
       >
         <header class="text-lg font-bold">
